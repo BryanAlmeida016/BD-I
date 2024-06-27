@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 15-Jun-2024 às 00:37
+-- Tempo de geração: 27-Jun-2024 às 02:36
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -44,7 +44,10 @@ INSERT INTO `casta` (`casta_id`, `casta`) VALUES
 (3, 'Tinta Barroca'),
 (4, 'Baga'),
 (5, 'Alfonsio'),
-(6, 'Jaden');
+(6, 'Jaden'),
+(7, 'Lírio de Trina'),
+(8, 'Winner'),
+(9, 'Withe Castle');
 
 -- --------------------------------------------------------
 
@@ -86,12 +89,15 @@ CREATE TABLE `produtor` (
 --
 
 INSERT INTO `produtor` (`produtor_id`, `produtor`, `moradaProdutor`, `telefone`, `email`, `codregiao`) VALUES
-(1, 'Qt.Vallado', 'Régua', '+351254323147', 'vallado@mail.telepac.pt', 1),
-(2, 'Produtos Bertoldo', 'Colinas Verdes', '+351786543235', 'bertoldo@mail.com', 2),
-(3, 'Finagra', 'Reguengos', '+351759365784', 'finagra@mail.com', 3),
-(4, 'Kevynho', 'Kevynaqui', '+356384959424', 'kekosanao@kemail.com', 4),
-(5, 'Vinho Grátis Confia Pai', 'Lake Big of Darkness', '+351123456789', 'pogers@broxamail.com', 5),
-(6, 'Prusquefazesisocomihgo', 'Querushora', '+351259351835', 'metiradaqui@socorromail.com', 6);
+(1, 'Qt.Vallado', 'Régua', '+3512543231', 'vallado@mail.telepac.pt', 1),
+(2, 'Produtos Bertoldo', 'Colinas Verdes', '+3517865432', 'bertoldo@mail.com', 2),
+(3, 'Finagra', 'Reguengos', '+3517593657', 'finagra@mail.com', 3),
+(4, 'Kevynho', 'Kevynaqui', '+3563849594', 'kekosanao@kemail.com', 4),
+(5, 'Vinho Grátis Confia Pai', 'Lake Big of Darkness', '+3511234567', 'pogers@broxamail.com', 5),
+(6, 'Prusquefazesisocomihgo', 'Querushora', '+351259351835', 'metiradaqui@socorromail.com', 6),
+(7, 'Chapolacolorada', 'Tangamandapio', '+35120028922', 'timeismoney@ohyeah.com', 4),
+(8, 'JasintoPena', 'Kanubis', '+35123434656', 'aquijasumwarrior@f.com', 6),
+(9, 'Beimendes', 'Minas Totais', '+35174748636', 'zedopaodequeijo@queromais.com', 2);
 
 -- --------------------------------------------------------
 
@@ -142,7 +148,11 @@ INSERT INTO `vinho` (`vinho_id`, `vinho`, `ano_vinho`, `cor`, `grau`, `preco`, `
 (3, 'Muros Antigos', 2006, 'Branco', 13.00, 7.50, 2),
 (4, 'Carignan', 2002, 'Doce', 10.00, 8.50, 4),
 (5, 'Petrus', 1945, 'Tinto', 9.00, 8000.00, 5),
-(6, 'Catena', 2007, 'Seco', 9.50, 20.00, 6);
+(6, 'Catena', 2007, 'Seco', 9.50, 20.00, 6),
+(7, 'Rellana', 2003, 'Doce', 12.00, 435.00, 7),
+(8, 'Malenia', 2019, 'Seco', 99.00, 666.00, 7),
+(9, 'Reduvia', 1999, 'Branco', 8.00, 250.00, 6),
+(10, 'Uchigatan', 1921, 'Tinto', 12.00, 199.00, 8);
 
 --
 -- Índices para tabelas despejadas
@@ -190,13 +200,13 @@ ALTER TABLE `vinho`
 -- AUTO_INCREMENT de tabela `casta`
 --
 ALTER TABLE `casta`
-  MODIFY `casta_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `casta_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `produtor`
 --
 ALTER TABLE `produtor`
-  MODIFY `produtor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `produtor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `regiao`
@@ -208,7 +218,7 @@ ALTER TABLE `regiao`
 -- AUTO_INCREMENT de tabela `vinho`
 --
 ALTER TABLE `vinho`
-  MODIFY `vinho_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `vinho_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restrições para despejos de tabelas
