@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19-Ago-2024 às 14:03
+-- Tempo de geração: 26-Ago-2024 às 14:02
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -41,6 +41,22 @@ CREATE TABLE `aluguel` (
   `idimovel` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Extraindo dados da tabela `aluguel`
+--
+
+INSERT INTO `aluguel` (`codaluguel`, `datafim`, `datainicio`, `descricao`, `valor`, `vencimento`, `idinquilino`, `idcorretor`, `idimovel`) VALUES
+(1, '2024-12-31', '2024-01-01', 'Aluguel do apartamento 101', 99.99, '2024-01-05', 1, 1, 1),
+(2, '2024-12-31', '2024-02-01', 'Aluguel da casa 202', 99.99, '2024-02-05', 2, 2, 2),
+(3, '2024-12-31', '2024-03-01', 'Aluguel do apartamento 303', 99.99, '2024-03-05', 3, 3, 3),
+(4, '2024-12-31', '2024-04-01', 'Aluguel da casa 404', 99.99, '2024-04-05', 4, 4, 4),
+(5, '2024-12-31', '2024-05-01', 'Aluguel da cobertura 505', 99.99, '2024-05-05', 5, 5, 5),
+(6, '2024-12-31', '2024-06-01', 'Aluguel da sala comercial 606', 99.99, '2024-06-05', 6, 6, 6),
+(7, '2024-12-31', '2024-07-01', 'Aluguel da chácara 707', 99.99, '2024-07-05', 7, 7, 7),
+(8, '2024-12-31', '2024-08-01', 'Aluguel do sobrado 808', 99.99, '2024-08-05', 8, 8, 8),
+(9, '2024-12-31', '2024-09-01', 'Aluguel do loft 909', 99.99, '2024-09-05', 9, 9, 9),
+(10, '2024-12-31', '2024-10-01', 'Aluguel do duplex 010', 99.99, '2024-10-05', 10, 10, 10);
+
 -- --------------------------------------------------------
 
 --
@@ -59,16 +75,16 @@ CREATE TABLE `corretor` (
 --
 
 INSERT INTO `corretor` (`idcorretor`, `email`, `telefone`, `nome`) VALUES
-(1, 'joao.silva@email.com', '11987654321', 'João Silva'),
-(2, 'ana.martins@email.com', '21987654321', 'Ana Martins'),
-(3, 'paulo.santos@email.com', '31987654321', 'Paulo Santos'),
-(4, 'luana.lima@email.com', '41987654321', 'Luana Lima'),
-(5, 'marcos.pereira@email.com', '51987654321', 'Marcos Pereira'),
-(6, 'carla.alves@email.com', '61987654321', 'Carla Alves'),
-(7, 'roberto.ferrari@email.com', '71987654321', 'Roberto Ferrari'),
-(8, 'juliana.souza@email.com', '81987654321', 'Juliana Souza'),
-(9, 'fernando.costa@email.com', '91987654321', 'Fernando Costa'),
-(10, 'patricia.gomes@email.com', '02987654321', 'Patricia Gomes');
+(1, 'm4l3n1a@email.com', '11987654321', 'Malenia'),
+(2, 'rannidasmeialua@email.com', '21987654321', 'Ranni'),
+(3, 'thebestgener4l@email.com', '31987654321', 'radahn'),
+(4, 'paiexemplar@email.com', '41987654321', 'Radagon'),
+(5, 'oprimeiroanel@email.com', '51987654321', 'Godfrey'),
+(6, 'agourod3l4s@email.com', '61987654321', 'Margit'),
+(7, 'etudom3u@email.com', '71987654321', 'Godrick'),
+(8, 'm1quel1nhadograu@email.com', '81987654321', 'Miquela'),
+(9, 'copiamasnfazigual@email.com', '91987654321', 'Rellana'),
+(10, 'vobrilhaoxente@email.com', '02987654321', 'Midra');
 
 -- --------------------------------------------------------
 
@@ -120,6 +136,22 @@ CREATE TABLE `fiador` (
   `idinquilino` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Extraindo dados da tabela `fiador`
+--
+
+INSERT INTO `fiador` (`idfiador`, `email`, `telefone`, `rg`, `cpf`, `nome`, `idendereco`, `idinquilino`) VALUES
+(1, 'jose.silva@example.com', '111223344', 'RG12345678', 'CPF12345678901', 'José Silva', 1, 2),
+(2, 'maria.souza@example.com', '222334455', 'RG23456789', 'CPF23456789012', 'Maria Souza', 2, 3),
+(3, 'pedro.almeida@example.com', '333445566', 'RG34567890', 'CPF34567890123', 'Pedro Almeida', 3, 4),
+(4, 'ana.pereira@example.com', '444556677', 'RG45678901', 'CPF45678901234', 'Ana Pereira', 4, 5),
+(5, 'lucas.oliveira@example.com', '555667788', 'RG56789012', 'CPF56789012345', 'Lucas Oliveira', 5, 6),
+(6, 'juliana.martins@example.com', '666778899', 'RG67890123', 'CPF67890123456', 'Juliana Martins', 6, 7),
+(7, 'roberto.santos@example.com', '777889900', 'RG78901234', 'CPF78901234567', 'Roberto Santos', 7, 8),
+(8, 'carla.lima@example.com', '888990011', 'RG89012345', 'CPF89012345678', 'Carla Lima', 8, 9),
+(9, 'rafael.goncalves@example.com', '999001122', 'RG90123456', 'CPF90123456789', 'Rafael Gonçalves', 9, 10),
+(10, 'luana.mendes@example.com', '000112233', 'RG01234567', 'CPF01234567890', 'Luana Mendes', 10, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -142,6 +174,22 @@ CREATE TABLE `imovel` (
   `idendereco` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Extraindo dados da tabela `imovel`
+--
+
+INSERT INTO `imovel` (`idimovel`, `disponivel`, `area`, `suite`, `banheiros`, `complemento`, `garagem`, `lavanderia`, `piscina`, `comodos`, `idmidida`, `idproprietario`, `idendereco`) VALUES
+(1, b'1', '120m²', b'1', 2, 'Apto 101', b'1', b'1', b'0', b'1', 1, 1, 1),
+(2, b'0', '80m²', b'0', 1, 'Casa 202', b'0', b'1', b'1', b'1', 2, 2, 2),
+(3, b'1', '150m²', b'1', 3, 'Casa 303', b'1', b'1', b'1', b'1', 3, 3, 3),
+(4, b'0', '200m²', b'1', 4, 'Apartamento 404', b'1', b'1', b'0', b'1', 4, 4, 4),
+(5, b'1', '95m²', b'1', 2, 'Cobertura 505', b'1', b'0', b'1', b'1', 5, 5, 5),
+(6, b'1', '110m²', b'0', 1, 'Sala Comercial 606', b'0', b'0', b'0', b'1', 6, 6, 6),
+(7, b'0', '175m²', b'1', 3, 'Chácara 707', b'1', b'1', b'1', b'1', 7, 7, 7),
+(8, b'1', '130m²', b'1', 2, 'Sobrado 808', b'1', b'1', b'0', b'1', 8, 8, 8),
+(9, b'1', '140m²', b'1', 2, 'Loft 909', b'0', b'1', b'1', b'1', 9, 9, 9),
+(10, b'0', '160m²', b'1', 3, 'Duplex 010', b'1', b'0', b'1', b'1', 10, 10, 10);
+
 -- --------------------------------------------------------
 
 --
@@ -163,16 +211,16 @@ CREATE TABLE `inquilino` (
 --
 
 INSERT INTO `inquilino` (`idinquilino`, `rg`, `fiador`, `telefone`, `nome`, `email`, `cpf`) VALUES
-(1, '34.423.762-4', 'Aline Dantas', '(11)98432-0385', 'Enzo Kingler', 'enzinhorei2@gmail.com', '453.534.234-97'),
-(2, '75.586.678-6', 'Bruno Sorrisos', '(11)95478-4820', 'Sem Matas', 'noflorest12345678@outlook.com', '798.432.651-04'),
-(3, '83.674.134-9', 'Bruno Zollotareff', '(11)23456-9837', 'Anna Delphine', 'beladopovo@gmail.com', '653.098.321-65'),
-(4, '58.347.723-1', 'João Morango', '(11)24383-8731', 'Big Paulos', 'ograndepau@gmail.com', '437.375.127-45'),
-(5, '92.432.673-3', 'Enzo Caetano', '(11)63522-6544', 'Pedrão Pedreiro', 'pedr0carn3s@hotmail.com', '324.468.236-53'),
-(6, '93.524.452-5', 'Casepirro Gabriel', '(11)27685-8552', 'Boliviano de Nascença', 'muril0bet4@gmail.com', '423.368.269-42'),
-(7, '72.364.921-2', 'Monark Kevyn', '(11)24658-7328', 'Small Mari', 'fofadodani2@etec.sp.gov.br', '258.137.342-76'),
-(8, '37.254.912-7', 'Alexandre de Moraes', '(11)90813-5272', 'Lucas Mortandela', 'cabritotev3z@gmail,com', '345.872.537-52'),
-(9, '82.649.134-6', 'Letícia Brisas', '(11)94264-7242', 'Wesley Safadão', 'reidelas@gmail.com', '539.525.234-43'),
-(10, '57.234.815-8', 'Iago Dormes', '(11)96420-6735', 'NakaNaka Mura Mura', 'matadordejegue@etec.sp.gov.br', '524.616.198-67');
+(1, '34.423.762-4', 'Pedro Almeida', '(11)98432-0385', 'Enzo Krabbs', 'enzinhorei4@gmail.com', '273.856.356-56'),
+(2, '75.586.678-6', 'Juliana Martins', '(11)95478-4820', 'Sem Gramas', 'noflorestas12345678@outlook.com', '256.285.684-45'),
+(3, '83.674.134-9', 'Carla Lima', '(11)23456-9837', 'Kelly Santos', 'chatadopovao@gmail.com', '678.629.052-03'),
+(4, '58.347.723-1', 'Ana Pereira', '(11)24383-8731', 'Small Paulin', 'opequenopaulo@gmail.com', '763.498.235-49'),
+(5, '92.432.673-3', 'Luana Mendes', 'Luana', 'Pedrinho Gameplays', 'pedr0j0g4@hotmail.com', '189.745.285-88'),
+(6, '93.524.452-5', 'Rafael Gonçalves', '(11)27685-8552', 'Espirro Gabrieloson', 'wolkv1b3s@gmail.com', '523.560.274-32'),
+(7, '72.364.921-2', 'Lucas Oliveira', '(11)24658-7328', 'Mariana Danada', 'tosolteir4@etec.sp.gov.br', '262.369.734-69'),
+(8, '37.254.912-7', 'Maria Souza', '(11)90813-5272', 'Paranorman Movie', 'euvejoc01s4s@gmail,com', '666.350.730-27'),
+(9, '82.649.134-6', 'José Silva', '(11)94264-7242', 'Michel de Tokyo', 'deliquentestbmchoram@gmail.com', '236.502.760-94'),
+(10, '57.234.815-8', 'Roberto Santos', '(11)96420-6735', 'Evellyn Trairas', 'evellyn5@etec.sp.gov.br', '436.859.306-48');
 
 -- --------------------------------------------------------
 
@@ -184,6 +232,22 @@ CREATE TABLE `midias` (
   `idmidida` int(11) NOT NULL,
   `midia` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Extraindo dados da tabela `midias`
+--
+
+INSERT INTO `midias` (`idmidida`, `midia`) VALUES
+(1, 'foto_local_001.jpeg'),
+(2, 'foto_local_002.png'),
+(3, 'foto_local_003.jpeg'),
+(4, 'foto_local_004.png'),
+(5, 'foto_local_005.jpeg'),
+(6, 'foto_local_006.png'),
+(7, 'foto_local_007.jpeg'),
+(8, 'foto_local_008.png'),
+(9, 'foto_local_009.jpeg'),
+(10, 'foto_local_010.png');
 
 -- --------------------------------------------------------
 
@@ -201,6 +265,22 @@ CREATE TABLE `proprietario` (
   `agencia` varchar(255) NOT NULL,
   `idendereco` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Extraindo dados da tabela `proprietario`
+--
+
+INSERT INTO `proprietario` (`idproprietario`, `email`, `telefone`, `nome`, `pix`, `banco`, `agencia`, `idendereco`) VALUES
+(1, 'jackson@example.com', '111223344', 'Jack Fuller', 'pixjack123', 'Banco do Brasil', '1234', 1),
+(2, 'maria.luiza@example.com', '222334455', 'Maria Luiza', 'pixmarialuiza456', 'Itaú', '5678', 2),
+(3, 'keithalmeida.31@example.com', '333445566', 'Keith de Almeida', 'keithania789', 'Bradesco', '9101', 3),
+(4, 'nataliaregina@example.com', '444556677', 'Natalia Regina', 'regisdasneves012', 'Santander', '1122', 4),
+(5, 'valdirbarbosa@example.com', '555667788', 'Valdir Barbosa', 'valdirbarbosa345', 'Caixa Econômica', '3344', 5),
+(6, 'alexandremoraes@example.com', '666778899', 'Alexandre de Moraes', 'xandinho678', 'Banrisul', '5566', 6),
+(7, 'andrezagomez@example.com', '777889900', 'Andreza Gomez', 'dedezania901', 'HSBC', '7788', 7),
+(8, 'stevenuniverso@example.com', '888990011', 'Steven Universo', 'diamond234', 'Banco Inter', '9900', 8),
+(9, 'gumballwatterson@example.com', '999001122', 'Gumball Watterson', 'chicletao567', 'Banco Original', '1122', 9),
+(10, 'finndetudo@example.com', '000112233', 'Finn Murtens', 'thehero890', 'Sicoob', '3344', 10);
 
 --
 -- Índices para tabelas despejadas
@@ -281,7 +361,7 @@ ALTER TABLE `proprietario`
 -- AUTO_INCREMENT de tabela `aluguel`
 --
 ALTER TABLE `aluguel`
-  MODIFY `codaluguel` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codaluguel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `corretor`
@@ -299,13 +379,13 @@ ALTER TABLE `endereco`
 -- AUTO_INCREMENT de tabela `fiador`
 --
 ALTER TABLE `fiador`
-  MODIFY `idfiador` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idfiador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `imovel`
 --
 ALTER TABLE `imovel`
-  MODIFY `idimovel` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idimovel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `inquilino`
@@ -317,13 +397,13 @@ ALTER TABLE `inquilino`
 -- AUTO_INCREMENT de tabela `midias`
 --
 ALTER TABLE `midias`
-  MODIFY `idmidida` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idmidida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `proprietario`
 --
 ALTER TABLE `proprietario`
-  MODIFY `idproprietario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idproprietario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restrições para despejos de tabelas
