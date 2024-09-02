@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26-Ago-2024 às 14:02
+-- Tempo de geração: 02-Set-2024 às 13:59
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -171,24 +171,25 @@ CREATE TABLE `imovel` (
   `comodos` bit(1) NOT NULL,
   `idmidida` int(11) DEFAULT NULL,
   `idproprietario` int(11) DEFAULT NULL,
-  `idendereco` int(11) DEFAULT NULL
+  `idendereco` int(11) DEFAULT NULL,
+  `quintal` bit(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Extraindo dados da tabela `imovel`
 --
 
-INSERT INTO `imovel` (`idimovel`, `disponivel`, `area`, `suite`, `banheiros`, `complemento`, `garagem`, `lavanderia`, `piscina`, `comodos`, `idmidida`, `idproprietario`, `idendereco`) VALUES
-(1, b'1', '120m²', b'1', 2, 'Apto 101', b'1', b'1', b'0', b'1', 1, 1, 1),
-(2, b'0', '80m²', b'0', 1, 'Casa 202', b'0', b'1', b'1', b'1', 2, 2, 2),
-(3, b'1', '150m²', b'1', 3, 'Casa 303', b'1', b'1', b'1', b'1', 3, 3, 3),
-(4, b'0', '200m²', b'1', 4, 'Apartamento 404', b'1', b'1', b'0', b'1', 4, 4, 4),
-(5, b'1', '95m²', b'1', 2, 'Cobertura 505', b'1', b'0', b'1', b'1', 5, 5, 5),
-(6, b'1', '110m²', b'0', 1, 'Sala Comercial 606', b'0', b'0', b'0', b'1', 6, 6, 6),
-(7, b'0', '175m²', b'1', 3, 'Chácara 707', b'1', b'1', b'1', b'1', 7, 7, 7),
-(8, b'1', '130m²', b'1', 2, 'Sobrado 808', b'1', b'1', b'0', b'1', 8, 8, 8),
-(9, b'1', '140m²', b'1', 2, 'Loft 909', b'0', b'1', b'1', b'1', 9, 9, 9),
-(10, b'0', '160m²', b'1', 3, 'Duplex 010', b'1', b'0', b'1', b'1', 10, 10, 10);
+INSERT INTO `imovel` (`idimovel`, `disponivel`, `area`, `suite`, `banheiros`, `complemento`, `garagem`, `lavanderia`, `piscina`, `comodos`, `idmidida`, `idproprietario`, `idendereco`, `quintal`) VALUES
+(1, b'1', '120m²', b'1', 2, 'Apto 101', b'1', b'1', b'0', b'1', 1, 1, 1, b'0'),
+(2, b'0', '80m²', b'0', 1, 'Casa 202', b'0', b'1', b'1', b'1', 2, 2, 2, b'1'),
+(3, b'1', '150m²', b'1', 3, 'Casa 303', b'1', b'1', b'1', b'1', 3, 3, 3, b'1'),
+(4, b'0', '200m²', b'1', 4, 'Apartamento 404', b'1', b'1', b'0', b'1', 4, 4, 4, b'0'),
+(5, b'1', '95m²', b'1', 2, 'Cobertura 505', b'1', b'0', b'1', b'1', 5, 5, 5, b'0'),
+(6, b'1', '110m²', b'0', 1, 'Sala Comercial 606', b'0', b'0', b'0', b'1', 6, 6, 6, b'1'),
+(7, b'0', '175m²', b'1', 3, 'Chácara 707', b'1', b'1', b'1', b'1', 7, 7, 7, b'0'),
+(8, b'1', '130m²', b'1', 2, 'Sobrado 808', b'1', b'1', b'0', b'1', 8, 8, 8, b'1'),
+(9, b'1', '140m²', b'1', 2, 'Loft 909', b'0', b'1', b'1', b'1', 9, 9, 9, b'0'),
+(10, b'0', '160m²', b'1', 3, 'Duplex 010', b'1', b'0', b'1', b'1', 10, 10, 10, b'1');
 
 -- --------------------------------------------------------
 
@@ -203,24 +204,26 @@ CREATE TABLE `inquilino` (
   `telefone` varchar(20) DEFAULT NULL,
   `nome` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `cpf` varchar(255) NOT NULL
+  `cpf` varchar(255) NOT NULL,
+  `salario` decimal(7,2) DEFAULT NULL,
+  `datanasc` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Extraindo dados da tabela `inquilino`
 --
 
-INSERT INTO `inquilino` (`idinquilino`, `rg`, `fiador`, `telefone`, `nome`, `email`, `cpf`) VALUES
-(1, '34.423.762-4', 'Pedro Almeida', '(11)98432-0385', 'Enzo Krabbs', 'enzinhorei4@gmail.com', '273.856.356-56'),
-(2, '75.586.678-6', 'Juliana Martins', '(11)95478-4820', 'Sem Gramas', 'noflorestas12345678@outlook.com', '256.285.684-45'),
-(3, '83.674.134-9', 'Carla Lima', '(11)23456-9837', 'Kelly Santos', 'chatadopovao@gmail.com', '678.629.052-03'),
-(4, '58.347.723-1', 'Ana Pereira', '(11)24383-8731', 'Small Paulin', 'opequenopaulo@gmail.com', '763.498.235-49'),
-(5, '92.432.673-3', 'Luana Mendes', 'Luana', 'Pedrinho Gameplays', 'pedr0j0g4@hotmail.com', '189.745.285-88'),
-(6, '93.524.452-5', 'Rafael Gonçalves', '(11)27685-8552', 'Espirro Gabrieloson', 'wolkv1b3s@gmail.com', '523.560.274-32'),
-(7, '72.364.921-2', 'Lucas Oliveira', '(11)24658-7328', 'Mariana Danada', 'tosolteir4@etec.sp.gov.br', '262.369.734-69'),
-(8, '37.254.912-7', 'Maria Souza', '(11)90813-5272', 'Paranorman Movie', 'euvejoc01s4s@gmail,com', '666.350.730-27'),
-(9, '82.649.134-6', 'José Silva', '(11)94264-7242', 'Michel de Tokyo', 'deliquentestbmchoram@gmail.com', '236.502.760-94'),
-(10, '57.234.815-8', 'Roberto Santos', '(11)96420-6735', 'Evellyn Trairas', 'evellyn5@etec.sp.gov.br', '436.859.306-48');
+INSERT INTO `inquilino` (`idinquilino`, `rg`, `fiador`, `telefone`, `nome`, `email`, `cpf`, `salario`, `datanasc`) VALUES
+(1, '34.423.762-4', 'Pedro Almeida', '(11)98432-0385', 'Enzo Krabbs', 'enzinhorei4@gmail.com', '273.856.356-56', '2100.00', '2000-04-06'),
+(2, '75.586.678-6', 'Juliana Martins', '(11)95478-4820', 'Sem Gramas', 'noflorestas12345678@outlook.com', '256.285.684-45', '1990.00', '1995-06-13'),
+(3, '83.674.134-9', 'Carla Lima', '(11)23456-9837', 'Kelly Santos', 'chatadopovao@gmail.com', '678.629.052-03', '2460.00', '1992-11-23'),
+(4, '58.347.723-1', 'Ana Pereira', '(11)24383-8731', 'Small Paulin', 'opequenopaulo@gmail.com', '763.498.235-49', '3200.00', '1999-02-05'),
+(5, '92.432.673-3', 'Luana Mendes', 'Luana', 'Pedrinho Gameplays', 'pedr0j0g4@hotmail.com', '189.745.285-88', '5100.00', '2002-05-17'),
+(6, '93.524.452-5', 'Rafael Gonçalves', '(11)27685-8552', 'Espirro Gabrieloson', 'wolkv1b3s@gmail.com', '523.560.274-32', '1500.00', '2005-07-06'),
+(7, '72.364.921-2', 'Lucas Oliveira', '(11)24658-7328', 'Mariana Danada', 'tosolteir4@etec.sp.gov.br', '262.369.734-69', '4620.00', '1996-01-03'),
+(8, '37.254.912-7', 'Maria Souza', '(11)90813-5272', 'Paranorman Movie', 'euvejoc01s4s@gmail,com', '666.350.730-27', '2050.00', '1989-12-25'),
+(9, '82.649.134-6', 'José Silva', '(11)94264-7242', 'Michel de Tokyo', 'deliquentestbmchoram@gmail.com', '236.502.760-94', '2050.00', '1988-10-10'),
+(10, '57.234.815-8', 'Roberto Santos', '(11)96420-6735', 'Evellyn Trairas', 'evellyn5@etec.sp.gov.br', '436.859.306-48', '2050.00', '2000-08-28');
 
 -- --------------------------------------------------------
 
