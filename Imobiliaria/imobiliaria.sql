@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02-Set-2024 às 13:59
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.0.25
+-- Tempo de geração: 02-Set-2024 às 22:44
+-- Versão do servidor: 10.4.32-MariaDB
+-- versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,11 +30,11 @@ USE `imobiliaria`;
 --
 
 CREATE TABLE `aluguel` (
-  `codaluguel` int(11) NOT NULL,
+  `codaluguel` int(10) NOT NULL,
   `datafim` date NOT NULL,
   `datainicio` date NOT NULL,
   `descricao` varchar(255) NOT NULL,
-  `valor` float(4,2) NOT NULL,
+  `valor` decimal(8,2) DEFAULT NULL,
   `vencimento` date NOT NULL,
   `idinquilino` int(11) DEFAULT NULL,
   `idcorretor` int(11) DEFAULT NULL,
@@ -46,16 +46,16 @@ CREATE TABLE `aluguel` (
 --
 
 INSERT INTO `aluguel` (`codaluguel`, `datafim`, `datainicio`, `descricao`, `valor`, `vencimento`, `idinquilino`, `idcorretor`, `idimovel`) VALUES
-(1, '2024-12-31', '2024-01-01', 'Aluguel do apartamento 101', 99.99, '2024-01-05', 1, 1, 1),
-(2, '2024-12-31', '2024-02-01', 'Aluguel da casa 202', 99.99, '2024-02-05', 2, 2, 2),
-(3, '2024-12-31', '2024-03-01', 'Aluguel do apartamento 303', 99.99, '2024-03-05', 3, 3, 3),
-(4, '2024-12-31', '2024-04-01', 'Aluguel da casa 404', 99.99, '2024-04-05', 4, 4, 4),
-(5, '2024-12-31', '2024-05-01', 'Aluguel da cobertura 505', 99.99, '2024-05-05', 5, 5, 5),
-(6, '2024-12-31', '2024-06-01', 'Aluguel da sala comercial 606', 99.99, '2024-06-05', 6, 6, 6),
-(7, '2024-12-31', '2024-07-01', 'Aluguel da chácara 707', 99.99, '2024-07-05', 7, 7, 7),
-(8, '2024-12-31', '2024-08-01', 'Aluguel do sobrado 808', 99.99, '2024-08-05', 8, 8, 8),
-(9, '2024-12-31', '2024-09-01', 'Aluguel do loft 909', 99.99, '2024-09-05', 9, 9, 9),
-(10, '2024-12-31', '2024-10-01', 'Aluguel do duplex 010', 99.99, '2024-10-05', 10, 10, 10);
+(1, '2024-12-13', '2024-01-01', 'Aluguel do apartamento 101', 2090.00, '2024-01-05', 1, 1, 1),
+(2, '2024-09-30', '2024-02-01', 'Aluguel da casa 202', 1500.00, '2024-02-05', 2, 2, 2),
+(3, '2024-11-16', '2024-03-01', 'Aluguel do apartamento 303', 975.00, '2024-03-05', 3, 3, 3),
+(4, '2024-12-31', '2024-04-01', 'Aluguel da casa 404', 5150.00, '2024-04-05', 4, 4, 4),
+(5, '2024-11-20', '2024-05-01', 'Aluguel da cobertura 505', 3430.00, '2024-05-05', 5, 5, 5),
+(6, '2025-02-17', '2024-06-01', 'Aluguel da sala comercial 606', 2300.00, '2024-06-05', 6, 6, 6),
+(7, '2024-10-23', '2024-07-01', 'Aluguel da chácara 707', 1810.00, '2024-07-05', 7, 7, 7),
+(8, '2025-01-20', '2024-08-01', 'Aluguel do sobrado 808', 1999.00, '2024-08-05', 8, 8, 8),
+(9, '2025-05-22', '2024-09-01', 'Aluguel do loft 909', 4009.00, '2024-09-05', 9, 9, 9),
+(10, '2024-11-10', '2024-10-01', 'Aluguel do duplex 010', 1280.00, '2024-10-05', 10, 10, 10);
 
 -- --------------------------------------------------------
 
@@ -64,7 +64,7 @@ INSERT INTO `aluguel` (`codaluguel`, `datafim`, `datainicio`, `descricao`, `valo
 --
 
 CREATE TABLE `corretor` (
-  `idcorretor` int(11) NOT NULL,
+  `idCorretor` int(10) NOT NULL,
   `email` varchar(255) NOT NULL,
   `telefone` varchar(20) DEFAULT NULL,
   `nome` varchar(255) NOT NULL
@@ -74,10 +74,10 @@ CREATE TABLE `corretor` (
 -- Extraindo dados da tabela `corretor`
 --
 
-INSERT INTO `corretor` (`idcorretor`, `email`, `telefone`, `nome`) VALUES
+INSERT INTO `corretor` (`idCorretor`, `email`, `telefone`, `nome`) VALUES
 (1, 'm4l3n1a@email.com', '11987654321', 'Malenia'),
 (2, 'rannidasmeialua@email.com', '21987654321', 'Ranni'),
-(3, 'thebestgener4l@email.com', '31987654321', 'radahn'),
+(3, 'carmo.araujo@gmail.com', '31987654321', 'radahn'),
 (4, 'paiexemplar@email.com', '41987654321', 'Radagon'),
 (5, 'oprimeiroanel@email.com', '51987654321', 'Godfrey'),
 (6, 'agourod3l4s@email.com', '61987654321', 'Margit'),
@@ -122,11 +122,45 @@ INSERT INTO `endereco` (`idendereco`, `cidade`, `cep`, `numero`, `rua`, `bairro`
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `endereço`
+--
+
+CREATE TABLE `endereço` (
+  `idendereço` int(30) NOT NULL,
+  `cidade` varchar(255) NOT NULL,
+  `bairro` varchar(255) NOT NULL,
+  `CEP` varchar(255) NOT NULL,
+  `rua` varchar(255) NOT NULL,
+  `estado` varchar(255) NOT NULL,
+  `complemento` varchar(100) DEFAULT NULL,
+  `numero` int(10) NOT NULL,
+  `idproprietario` int(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Extraindo dados da tabela `endereço`
+--
+
+INSERT INTO `endereço` (`idendereço`, `cidade`, `bairro`, `CEP`, `rua`, `estado`, `complemento`, `numero`, `idproprietario`) VALUES
+(1, 'São Paulo', 'Centro', '01000-000', 'Rua A', 'SP', 'Apto 101', 123, 1),
+(2, 'Rio de Janeiro', 'Copacabana', '22000-000', 'Avenida Atlântica', 'RJ', NULL, 456, 2),
+(3, 'Belo Horizonte', 'Savassi', '30100-000', 'Rua B', 'MG', 'Cobertura', 789, 3),
+(4, 'Curitiba', 'Batel', '80200-000', 'Rua C', 'PR', NULL, 321, 4),
+(5, 'Porto Alegre', 'Moinhos de Vento', '90500-000', 'Avenida D', 'RS', 'Casa 2', 654, 5),
+(6, 'Salvador', 'Barra', '40100-000', 'Rua E', 'BA', 'Edifício Solaris', 987, 6),
+(7, 'Brasília', 'Asa Sul', '70200-000', 'SQN 102', 'DF', 'Bloco C', 147, 7),
+(8, 'Fortaleza', 'Meireles', '60100-000', 'Rua F', 'CE', NULL, 258, 8),
+(9, 'Recife', 'Boa Viagem', '51000-000', 'Avenida G', 'PE', 'Apto 901', 369, 9),
+(10, 'Manaus', 'Ponta Negra', '69000-000', 'Rua H', 'AM', 'Casa 1', 741, 10);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `fiador`
 --
 
 CREATE TABLE `fiador` (
-  `idfiador` int(11) NOT NULL,
+  `idfiador` int(10) NOT NULL,
   `email` varchar(255) NOT NULL,
   `telefone` varchar(20) DEFAULT NULL,
   `rg` varchar(255) DEFAULT NULL,
@@ -155,11 +189,39 @@ INSERT INTO `fiador` (`idfiador`, `email`, `telefone`, `rg`, `cpf`, `nome`, `ide
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `fotos`
+--
+
+CREATE TABLE `fotos` (
+  `idfoto` int(100) NOT NULL,
+  `midias` varchar(255) DEFAULT NULL,
+  `idimovel` int(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Extraindo dados da tabela `fotos`
+--
+
+INSERT INTO `fotos` (`idfoto`, `midias`, `idimovel`) VALUES
+(1, 'foto1_apartamento.jpg', 1),
+(2, 'foto2_apartamento.jpg', 1),
+(3, 'foto1_casa_piscina.jpg', 2),
+(4, 'foto2_casa_piscina.jpg', 2),
+(5, 'foto1_kitnet.jpg', 3),
+(6, 'foto2_kitnet.jpg', 3),
+(7, 'foto1_cobertura.jpg', 4),
+(8, 'foto2_cobertura.jpg', 4),
+(9, 'foto1_sobrado.jpg', 5),
+(10, 'foto2_sobrado.jpg', 5);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `imovel`
 --
 
 CREATE TABLE `imovel` (
-  `idimovel` int(11) NOT NULL,
+  `idimovel` int(10) NOT NULL,
   `disponivel` bit(1) NOT NULL,
   `area` varchar(255) NOT NULL,
   `suite` bit(1) NOT NULL,
@@ -198,7 +260,7 @@ INSERT INTO `imovel` (`idimovel`, `disponivel`, `area`, `suite`, `banheiros`, `c
 --
 
 CREATE TABLE `inquilino` (
-  `idinquilino` int(11) NOT NULL,
+  `idinquilino` int(10) NOT NULL,
   `rg` varchar(255) DEFAULT NULL,
   `fiador` varchar(255) NOT NULL,
   `telefone` varchar(20) DEFAULT NULL,
@@ -214,16 +276,16 @@ CREATE TABLE `inquilino` (
 --
 
 INSERT INTO `inquilino` (`idinquilino`, `rg`, `fiador`, `telefone`, `nome`, `email`, `cpf`, `salario`, `datanasc`) VALUES
-(1, '34.423.762-4', 'Pedro Almeida', '(11)98432-0385', 'Enzo Krabbs', 'enzinhorei4@gmail.com', '273.856.356-56', '2100.00', '2000-04-06'),
-(2, '75.586.678-6', 'Juliana Martins', '(11)95478-4820', 'Sem Gramas', 'noflorestas12345678@outlook.com', '256.285.684-45', '1990.00', '1995-06-13'),
-(3, '83.674.134-9', 'Carla Lima', '(11)23456-9837', 'Kelly Santos', 'chatadopovao@gmail.com', '678.629.052-03', '2460.00', '1992-11-23'),
-(4, '58.347.723-1', 'Ana Pereira', '(11)24383-8731', 'Small Paulin', 'opequenopaulo@gmail.com', '763.498.235-49', '3200.00', '1999-02-05'),
-(5, '92.432.673-3', 'Luana Mendes', 'Luana', 'Pedrinho Gameplays', 'pedr0j0g4@hotmail.com', '189.745.285-88', '5100.00', '2002-05-17'),
-(6, '93.524.452-5', 'Rafael Gonçalves', '(11)27685-8552', 'Espirro Gabrieloson', 'wolkv1b3s@gmail.com', '523.560.274-32', '1500.00', '2005-07-06'),
-(7, '72.364.921-2', 'Lucas Oliveira', '(11)24658-7328', 'Mariana Danada', 'tosolteir4@etec.sp.gov.br', '262.369.734-69', '4620.00', '1996-01-03'),
-(8, '37.254.912-7', 'Maria Souza', '(11)90813-5272', 'Paranorman Movie', 'euvejoc01s4s@gmail,com', '666.350.730-27', '2050.00', '1989-12-25'),
-(9, '82.649.134-6', 'José Silva', '(11)94264-7242', 'Michel de Tokyo', 'deliquentestbmchoram@gmail.com', '236.502.760-94', '2050.00', '1988-10-10'),
-(10, '57.234.815-8', 'Roberto Santos', '(11)96420-6735', 'Evellyn Trairas', 'evellyn5@etec.sp.gov.br', '436.859.306-48', '2050.00', '2000-08-28');
+(1, '34.423.762-4', 'Pedro Almeida', '(11)98432-0385', 'Enzo Krabbs', 'enzinhorei4@gmail.com', '273.856.356-56', 2100.00, '2000-04-06'),
+(2, '75.586.678-6', 'Juliana Martins', '(11)95478-4820', 'Sem Gramas', 'noflorestas12345678@outlook.com', '256.285.684-45', 1990.00, '1995-06-13'),
+(3, '83.674.134-9', 'Carla Lima', '(11)23456-9837', 'Kelly Santos', 'chatadopovao@gmail.com', '678.629.052-03', 2460.00, '1992-11-23'),
+(4, '58.347.723-1', 'Ana Pereira', '(11)24383-8731', 'Small Paulin', 'opequenopaulo@gmail.com', '763.498.235-49', 3200.00, '1999-02-05'),
+(5, '92.432.673-3', 'Luana Mendes', 'Luana', 'Pedrinho Gameplays', 'pedr0j0g4@hotmail.com', '189.745.285-88', 5100.00, '2002-05-17'),
+(6, '93.524.452-5', 'Rafael Gonçalves', '(11)27685-8552', 'Espirro Gabrieloson', 'wolkv1b3s@gmail.com', '523.560.274-32', 1500.00, '2005-07-06'),
+(7, '72.364.921-2', 'Lucas Oliveira', '(11)24658-7328', 'Mariana Danada', 'tosolteir4@etec.sp.gov.br', '262.369.734-69', 4620.00, '1996-01-03'),
+(8, '37.254.912-7', 'Maria Souza', '(11)90813-5272', 'Paranorman Movie', 'euvejoc01s4s@gmail,com', '666.350.730-27', 2050.00, '1989-12-25'),
+(9, '82.649.134-6', 'José Silva', '(11)94264-7242', 'Michel de Tokyo', 'deliquentestbmchoram@gmail.com', '236.502.760-94', 2050.00, '1988-10-10'),
+(10, '57.234.815-8', 'Roberto Santos', '(11)96420-6735', 'Evellyn Trairas', 'evellyn5@etec.sp.gov.br', '436.859.306-48', 2050.00, '2000-08-28');
 
 -- --------------------------------------------------------
 
@@ -259,7 +321,7 @@ INSERT INTO `midias` (`idmidida`, `midia`) VALUES
 --
 
 CREATE TABLE `proprietario` (
-  `idproprietario` int(11) NOT NULL,
+  `idproprietario` int(20) NOT NULL,
   `email` varchar(255) NOT NULL,
   `telefone` varchar(20) DEFAULT NULL,
   `nome` varchar(255) NOT NULL,
@@ -302,7 +364,7 @@ ALTER TABLE `aluguel`
 -- Índices para tabela `corretor`
 --
 ALTER TABLE `corretor`
-  ADD PRIMARY KEY (`idcorretor`),
+  ADD PRIMARY KEY (`idCorretor`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
@@ -311,6 +373,13 @@ ALTER TABLE `corretor`
 ALTER TABLE `endereco`
   ADD PRIMARY KEY (`idendereco`),
   ADD UNIQUE KEY `cep` (`cep`);
+
+--
+-- Índices para tabela `endereço`
+--
+ALTER TABLE `endereço`
+  ADD PRIMARY KEY (`idendereço`),
+  ADD KEY `idproprietario` (`idproprietario`);
 
 --
 -- Índices para tabela `fiador`
@@ -322,6 +391,13 @@ ALTER TABLE `fiador`
   ADD UNIQUE KEY `rg` (`rg`),
   ADD KEY `idendereco` (`idendereco`),
   ADD KEY `idinquilino` (`idinquilino`);
+
+--
+-- Índices para tabela `fotos`
+--
+ALTER TABLE `fotos`
+  ADD PRIMARY KEY (`idfoto`),
+  ADD KEY `idimovel` (`idimovel`);
 
 --
 -- Índices para tabela `imovel`
@@ -364,13 +440,13 @@ ALTER TABLE `proprietario`
 -- AUTO_INCREMENT de tabela `aluguel`
 --
 ALTER TABLE `aluguel`
-  MODIFY `codaluguel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `codaluguel` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `corretor`
 --
 ALTER TABLE `corretor`
-  MODIFY `idcorretor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idCorretor` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `endereco`
@@ -379,22 +455,34 @@ ALTER TABLE `endereco`
   MODIFY `idendereco` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT de tabela `endereço`
+--
+ALTER TABLE `endereço`
+  MODIFY `idendereço` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT de tabela `fiador`
 --
 ALTER TABLE `fiador`
-  MODIFY `idfiador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idfiador` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de tabela `fotos`
+--
+ALTER TABLE `fotos`
+  MODIFY `idfoto` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `imovel`
 --
 ALTER TABLE `imovel`
-  MODIFY `idimovel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idimovel` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `inquilino`
 --
 ALTER TABLE `inquilino`
-  MODIFY `idinquilino` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idinquilino` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `midias`
@@ -406,7 +494,7 @@ ALTER TABLE `midias`
 -- AUTO_INCREMENT de tabela `proprietario`
 --
 ALTER TABLE `proprietario`
-  MODIFY `idproprietario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idproprietario` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restrições para despejos de tabelas
@@ -421,11 +509,23 @@ ALTER TABLE `aluguel`
   ADD CONSTRAINT `aluguel_ibfk_3` FOREIGN KEY (`idimovel`) REFERENCES `imovel` (`idimovel`);
 
 --
+-- Limitadores para a tabela `endereço`
+--
+ALTER TABLE `endereço`
+  ADD CONSTRAINT `endereço_ibfk_1` FOREIGN KEY (`idproprietario`) REFERENCES `proprietario` (`idproprietario`);
+
+--
 -- Limitadores para a tabela `fiador`
 --
 ALTER TABLE `fiador`
   ADD CONSTRAINT `fiador_ibfk_1` FOREIGN KEY (`idendereco`) REFERENCES `endereco` (`idendereco`),
   ADD CONSTRAINT `fiador_ibfk_2` FOREIGN KEY (`idinquilino`) REFERENCES `inquilino` (`idinquilino`);
+
+--
+-- Limitadores para a tabela `fotos`
+--
+ALTER TABLE `fotos`
+  ADD CONSTRAINT `fotos_ibfk_1` FOREIGN KEY (`idimovel`) REFERENCES `imovel` (`idimovel`);
 
 --
 -- Limitadores para a tabela `imovel`
